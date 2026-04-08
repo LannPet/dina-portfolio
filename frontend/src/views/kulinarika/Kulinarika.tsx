@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { MasonryPhotoAlbum } from "react-photo-album"
 import type { Photo } from "react-photo-album"
 import "react-photo-album/masonry.css"
+import { LoaderCircle } from "lucide-react"
 
 type CloudinaryPhoto = {
     public_id: string
@@ -118,11 +119,11 @@ export default function Kulinarika() {
 
             {isLoading ? (
                 <div className="flex min-h-40 items-center justify-center text-center font-roboto text-sm tracking-[0.2em] text-neutral-500 uppercase">
-                    Nalagam fotografije...
+                    <LoaderCircle className="animate-spin"/>
                 </div>
             ) : errorMessage ? (
                 <div className="flex min-h-40 items-center justify-center text-center font-roboto text-sm tracking-[0.08em] text-neutral-500">
-                    {errorMessage}
+
                 </div>
             ) : (
                 <div className="mx-auto w-full">
