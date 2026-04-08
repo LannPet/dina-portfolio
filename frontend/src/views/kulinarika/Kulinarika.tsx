@@ -22,9 +22,17 @@ export default function Kulinarika() {
                 const response = await fetch("/.netlify/functions/fetchPhotos")
 
                 if (!response.ok) {
-                    const errorData = await response.json().catch(() => null)
-                    const message =
-                        errorData?.error ?? "Failed to fetch photos."
+                    const rawError = await response.text()
+                    let message = "Failed to fetch photos."
+
+                    try {
+                        const errorData = JSON.parse(rawError)
+                        message = errorData?.error ?? message
+                    } catch {
+                        if (rawError.trim()) {
+                            message = rawError
+                        }
+                    }
 
                     throw new Error(message)
                 }
