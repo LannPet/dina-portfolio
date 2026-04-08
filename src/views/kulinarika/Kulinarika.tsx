@@ -51,8 +51,8 @@ export default function Kulinarika() {
 
     return (
         <section className="w-full shrink grow basis-auto px-4 py-4 sm:px-4 sm:h-full sm:overflow-y-auto">
-            <div className="w-full sm:hidden font-extralight tracking-widest font-roboto text-sm mb-5 mt-20 flex justify-center items-center">
-                MOJA KULINARIKA
+            <div className="w-full sm:hidden font-extralight tracking-widest font-roboto text-3xl mb-5 mt-20 flex justify-center items-center">
+                Moja kulinarika
             </div>
             <style>
                 {`

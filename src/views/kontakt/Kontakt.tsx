@@ -1,10 +1,10 @@
 export default function Kontakt(){
     return (
         <section className="w-full shrink grow basis-auto px-4 py-6 sm:h-full sm:overflow-y-auto sm:px-6 md:px-8">
-            <div className="w-full sm:hidden font-extralight tracking-widest font-roboto text-sm mb-5 mt-20 flex justify-center items-center">
+            <div className="w-full sm:hidden font-extralight tracking-widest font-raleway text-3xl mb-4 sm:mt-10 flex justify-center items-center">
                 Kontakt
             </div>
-            <div className="font-raleway hidden sm:block text-[3rem] leading-none text-[#525252] tracking-[0.18em] sm:text-[4rem] md:text-[5rem] sm:mt-10 mt-10 text-center sm:text-left">
+            <div className="font-raleway hidden sm:block text-[3rem] leading-none text-[#525252] tracking-[0.18em] sm:text-[3em] md:text-[3rem] sm:mt-10 mt-10 text-center sm:text-left">
                 KONTAKT
             </div>
             <div className="mt-8 max-w-[760px] rounded-[28px] sm:mt-10">

@@ -5,6 +5,7 @@ import fbIcon from "../../assets/icons/fb_icon.svg";
 import igIcon from "../../assets/icons/ig_icon.svg";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import logo from "../../assets/images/logo.svg"
 
 const navItems = [
     {
@@ -39,9 +40,12 @@ export default function Navigation(){
         navigate(navigateTo, { replace: true });
     }
 
+    const navIsVisible = location.pathname.includes("kulinarika");
+
+
     return (
         <>
-            <section className="border-r border-gray-100 shrink-0 grow-0 basis-auto sm:basis-[330px] px-3 sm:px-8 py-4 flex flex-col sm:h-full">
+            <section className="border-r border-gray-100 shrink-0 grow-0 basis-auto sm:basis-[330px] px-3 sm:px-8 py-4 sm:flex flex-col sm:h-full">
                 <div className="w-full justify-end flex sm:hidden mb-10">
                     <button
                         type="button"
@@ -52,8 +56,8 @@ export default function Navigation(){
                         <Menu size={30}/>
                     </button>
                 </div>
-                <img src={mainImage} alt="" className="rounded-full w-full h-auto shadow-xl" />
-                <div className="font-raleway flex flex-col text-2xl tracking-widest mt-5 text-center sm:text-left">
+                <img src={mainImage} alt="" className={`rounded-full w-full h-auto shadow-xl sm:inline ${navIsVisible ? "" : "hidden"} `} />
+                <div className={`font-raleway sm:flex ${navIsVisible ? "" : "hidden"} flex-col text-2xl tracking-widest mt-5 text-center sm:text-left`}>
                     <div className="font-raleway font-medium">
                         Dina Peterca
                     </div>
@@ -74,10 +78,10 @@ export default function Navigation(){
                     </ul>
                     <div className="sm:flex hidden flex-row mt-6 gap-3 items-start justify-start">
                         <a href="https://www.facebook.com/dina.peterca/" target="_blank">
-                            <img src={fbIcon} className="w-6 cursor-pointer" alt="" />
+                            <img src={fbIcon} className="w-6 cursor-pointer hover:-translate-y-0.5 transition-all duration-150 " alt="" />
                         </a>
                         <a href="https://www.instagram.com/petercadina/" target="_blank">
-                            <img src={igIcon} className="w-6 cursor-pointer" alt="" />
+                            <img src={igIcon} className="w-6 cursor-pointer hover:-translate-y-0.5 transition-all duration-150" alt="" />
                         </a>
 
                     </div>

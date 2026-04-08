@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { Routes, Route, useLocation } from "react-router"
+import { Routes, Route, useLocation, Navigate } from "react-router"
 import Navigation from "./components/navigation/Navigation"
 import Kulinarika from "./views/kulinarika/Kulinarika"
 import Omeni from "./views/oMeni/Omeni"
@@ -40,7 +40,15 @@ function App() {
         <Routes location={location}>
           <Route
             path="*"
-            element={<Kulinarika/>}
+            element={
+              <Navigate to="/kulinarika" replace/>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <Navigate to="/kulinarika" replace/>
+            }
           />
           <Route
             path="/kulinarika"
