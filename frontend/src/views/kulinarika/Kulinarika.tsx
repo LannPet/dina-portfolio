@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { MasonryPhotoAlbum } from "react-photo-album"
 import type { Photo } from "react-photo-album"
 import "react-photo-album/masonry.css"
@@ -48,19 +48,6 @@ const photos: Photo[] = [
 
 export default function Kulinarika() {
     const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
-
-
-    useEffect(() => {
-        const fetchPhotos = async () => {
-
-            // fetch()
-
-
-        }
-
-
-
-    }, []);
 
 
 
