@@ -29,8 +29,6 @@ export default function Kulinarika() {
                     throw new Error(message)
                 }
 
-                console.log("response", response)
-
                 const data: CloudinaryPhoto[] = await response.json()
                 const formattedPhotos: Photo[] = data.map((photo) => ({
                     key: photo.public_id,
