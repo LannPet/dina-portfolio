@@ -22,8 +22,14 @@ export default function Kulinarika() {
                 const response = await fetch("/.netlify/functions/fetchPhotos")
 
                 if (!response.ok) {
-                    throw new Error("Failed to fetch photos.")
+                    const errorData = await response.json().catch(() => null)
+                    const message =
+                        errorData?.error ?? "Failed to fetch photos."
+
+                    throw new Error(message)
                 }
+
+                console.log("response", response)
 
                 const data: CloudinaryPhoto[] = await response.json()
                 const formattedPhotos: Photo[] = data.map((photo) => ({
@@ -36,7 +42,11 @@ export default function Kulinarika() {
                 setPhotos(formattedPhotos)
             } catch (error) {
                 console.error("Failed to load Cloudinary photos:", error)
-                setErrorMessage("Fotografij trenutno ni bilo mogoce naloziti.")
+                setErrorMessage(
+                    error instanceof Error
+                        ? error.message
+                        : "Fotografij trenutno ni bilo mogoce naloziti."
+                )
             } finally {
                 setIsLoading(false)
             }
