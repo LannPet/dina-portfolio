@@ -13,23 +13,41 @@ export const handler = async () => {
     }
 
     const credentials = Buffer.from(`${apiKey}:${apiSecret}`).toString("base64")
-    const params = new URLSearchParams({
-      asset_folder: "kulinarika",
-      max_results: "100",
-    })
 
     const response = await fetch(
-      `https://api.cloudinary.com/v1_1/${cloudName}/resources/by_asset_folder?${params.toString()}`,
+      `https://api.cloudinary.com/v1_1/${cloudName}/resources/search`,
       {
-        method: "GET",
+        method: "POST",
         headers: {
           Authorization: `Basic ${credentials}`,
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          expression: 'asset_folder:"kulinarika"',
+          sort_by: [{ created_at: "desc" }],
+          max_results: 100,
+        }),
       }
     )
 
     const rawBody = await response.text()
-    const parsedBody = rawBody ? JSON.parse(rawBody) : null
+    let parsedBody = null
+
+    try {
+      parsedBody = rawBody ? JSON.parse(rawBody) : null
+    } catch {
+      if (!response.ok) {
+        return {
+          statusCode: response.status,
+          headers: jsonHeaders,
+          body: JSON.stringify({
+            error: `Cloudinary returned non-JSON response: ${rawBody.slice(0, 200)}`,
+          }),
+        }
+      }
+
+      throw new Error("Cloudinary returned a non-JSON success response.")
+    }
 
     if (!response.ok) {
       const cloudinaryMessage =
