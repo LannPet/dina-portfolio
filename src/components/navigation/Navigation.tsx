@@ -5,7 +5,7 @@ import fbIcon from "../../assets/icons/fb_icon.svg";
 import igIcon from "../../assets/icons/ig_icon.svg";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import logo from "../../assets/images/logo.svg"
+// import logo from "../../assets/images/logo.svg"
 
 const navItems = [
     {
