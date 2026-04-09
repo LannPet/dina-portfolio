@@ -8,7 +8,6 @@ import Izkusnje from "./views/izkusnje/Izkusnje"
 import MainLayout from "./layouts/MainLayout"
 
 
-
 function App() {
   const location = useLocation()
 
