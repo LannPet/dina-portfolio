@@ -5,7 +5,6 @@ import fbIcon from "../../assets/icons/fb_icon.svg";
 import igIcon from "../../assets/icons/ig_icon.svg";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-// import logo from "../../assets/images/logo.svg"
 
 const navItems = [
     {
@@ -56,7 +55,12 @@ export default function Navigation(){
                         <Menu size={30}/>
                     </button>
                 </div>
-                <img src={mainImage} alt="" className={`rounded-full w-full h-auto shadow-xl sm:inline ${navIsVisible ? "" : "hidden"} `} />
+                <img src={mainImage}
+                    alt=""
+                    width={265}
+                    height={265}
+                    className={`rounded-full w-full h-auto shadow-xl sm:inline ${navIsVisible ? "" : "hidden"} `}
+                    />
                 <div className={`font-raleway sm:flex ${navIsVisible ? "" : "hidden"} flex-col text-2xl tracking-widest mt-5 text-center sm:text-left`}>
                     <div className="font-raleway font-medium">
                         Dina Peterca
