@@ -33,7 +33,8 @@ export default function Kulinarika() {
             </style>
 
             {isFetching ? (
-                <div className="flex min-h-40 items-center justify-center text-center font-roboto text-sm tracking-[0.2em] text-neutral-500 uppercase">
+                <div className="flex min-h-40 items-center justify-center text-center font-roboto text-sm tracking-[0.2em] text-neutral-500 uppercase gap-5 flex-row">
+                    Nalagam dobrote
                     <LoaderCircle className="animate-spin"/>
                 </div>
             ) : photosArray.length == 0 ? (
