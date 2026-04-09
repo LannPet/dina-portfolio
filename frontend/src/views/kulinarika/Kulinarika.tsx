@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { MasonryPhotoAlbum } from "react-photo-album"
 import type { Photo } from "react-photo-album"
 import "react-photo-album/masonry.css"
@@ -6,7 +6,6 @@ import { LoaderCircle } from "lucide-react"
 import { useFetchPhotos } from "../../hooks/useFetchPhotos"
 
 export default function Kulinarika() {
-    const [photos, setPhotos] = useState<Photo[]>([])
     const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
 
     const {data: photosArray = [], isFetching} = useFetchPhotos()
