@@ -5,10 +5,24 @@ import "react-photo-album/masonry.css"
 import { LoaderCircle } from "lucide-react"
 import { useFetchPhotos } from "../../hooks/useFetchPhotos"
 
+const aspectRatioVariants = [0.88, 1, 1.12, 0.94, 1.08]
+
 export default function Kulinarika() {
     const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null)
 
     const {data: photosArray = [], isFetching} = useFetchPhotos()
+    const albumPhotos = photosArray.map((photo: Photo, index: number): Photo => {
+        const safeWidth = photo.width || 1200
+        const safeHeight = photo.height || 900
+        const ratioShift = aspectRatioVariants[index % aspectRatioVariants.length]
+        const adjustedHeight = Math.round(safeHeight * ratioShift)
+
+        return {
+            ...photo,
+            width: safeWidth,
+            height: adjustedHeight,
+        }
+    })
 
 
     return (
@@ -43,7 +57,7 @@ export default function Kulinarika() {
             ) : (
                 <div className="mx-auto w-full">
                     <MasonryPhotoAlbum
-                        photos={photosArray}
+                        photos={albumPhotos}
                         columns={(containerWidth) => {
                             if (containerWidth < 640) return 1
                             if (containerWidth < 1024) return 2
